@@ -16,6 +16,9 @@ An example invocation would be:
 docker run -e SQUID_USERNAME=foo -e SQUID_PASSWORD=bar -p 3128:3128 robhaswell/squid-authenticated
 ```
 
+With some added performance improvements and transparency settings.
+Latest version of Squid.
+
 Details
 =======
 
