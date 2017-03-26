@@ -1,11 +1,13 @@
-FROM ubuntu:xenial
+FROM alpine:3.5
 MAINTAINER Evan Sarmiento <evansarm@gmail.com>
-RUN apt-get -qqy update
-RUN apt-get -qqy upgrade
-RUN apt-get -qqy install apache2-utils squid3 python
+RUN apk update \
+    && apk add squid=3.5.23-r0 \
+    && apk add curl \
+    && apk add apache2-utils \
+    && rm -rf /var/cache/apk/*
 RUN mkdir /usr/etc
 COPY squid.conf /etc/squid/squid.conf
 EXPOSE 3128
-VOLUME /var/log/squid3
+VOLUME /var/log/squid
 ADD init /init
 CMD ["/init"]

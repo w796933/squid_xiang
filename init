@@ -1,5 +1,10 @@
 #!/bin/sh
+set -e
 htpasswd -bc /usr/etc/passwd "${SQUID_USERNAME}" "${SQUID_PASSWORD}"
-squid3 -N $*
-exec tail -F /var/log/squid3/cache.log
+CHOWN=$(/usr/bin/which chown)
+SQUID=$(/usr/bin/which squid)
+"$CHOWN" -R squid:squid /var/cache/squid
+"$CHOWN" -R squid:squid /var/log/squid
+squid -N $*
+exec tail -F /var/log/squid/cache.log
 
