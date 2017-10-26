@@ -1,3 +1,8 @@
+thanks . 
+
+
+https://github.com/doprdele/squid-docker-simple-auth
+
 squid-docker-simple-auth
 ========================
 
